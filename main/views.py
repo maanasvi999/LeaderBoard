@@ -59,7 +59,6 @@ def search(request):
     return render(request, 'main/leaderboard.html', {'marks': marks})
 
 def single_slug(request, single_slug):
-    messages.info(request, 'No Corresponding data for that request')
     return redirect('main:homepage')
 
 from rest_framework import viewsets
