@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<body>
+{% extends "main/header.html" %}
+{% block content%}
+<div class="container">
+    <h6>Want to check the LeaderBoard? Click below</h6>
+    <a href="/leaderboard"><button class="btn btn-success">LeaderBoard</button></a>
+    <br/><br/>
+    <h6>Want to check where you stand? Fill the form below:</h6>
+    {% if form.is_valid %}
+        <h6>Score Calculated</h6>
+        <p>Total: {{total}}</p>
+        <p>Percentage: {{percentage}}</p>
+    {% else %}
+        <h6>Calculating Total Score:</h6>
+    {% endif %}    
+    <form method = "POST" action="{% url 'main:addmarks' %}"> 
+        {% csrf_token %}
+        {{form.as_p}}  
+        <button class="btn btn-success">Submit</button>
+    </form> 
+</div>
+{% endblock%}
+</body>
+</html>

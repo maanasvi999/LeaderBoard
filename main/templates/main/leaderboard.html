@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<body>
+{% extends "main/header.html" %}
+{% block content%}
+<div>
+    <h3>The LeaderBoard</h3>
+
+    <div class="row">
+      <form action="{% url 'main:search' %}" method="get">
+        <div class="col s12 m6 l6">
+          <div class="form-group">
+          <input class="form-control" name="query" type="text" placeholder="Type Name or Roll No to search...">
+          </div>
+        </div>
+        <button class="btn">Search</button>
+      </form>
+    </div>
+
+    <table class="responsive-table highlight centered">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Roll No</th>
+          <th>Percentage</th>
+          <th>Total</th>
+          <th>Mathematics</th>
+          <th>Physics</th>
+          <th>Chemistry</th>
+        </tr>
+      </thead>
+
+      {% for m in marks %}
+      <tbody>
+        <tr>
+          <td><strong>{{ forloop.counter }} </strong></td>
+          <td><strong>{{ m.name }}</strong></td>
+          <td>{{ m.roll_no }}</td>
+          <td>{{ m.percentage }}</td>
+          <td>{{ m.total }}</td>
+          <td>{{ m.math_marks }}</td>
+          <td>{{ m.physics_marks }}</td>
+          <td>{{ m.chemistry_marks }}</td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+</div>
+{% endblock%}
+</body>
+</html>
