@@ -39,7 +39,7 @@ def addmarks(request):
                 data.total = total
                 data.percentage = percentage
                 data.save()
-                messages.info(request, "Added to Leaderboard!")
+                messages.success(request, "Added to Leaderboard!")
                 context = {'form':form, 'total':total, 'percentage':percentage}
                 return render(request, 'main/addmarks.html', context)
         else:
@@ -59,7 +59,7 @@ def search(request):
     return render(request, 'main/leaderboard.html', {'marks': marks})
 
 def single_slug(request, single_slug):
-    messages.warning(request, 'No Corresponding data for that request')
+    messages.info(request, 'No Corresponding data for that request')
     return redirect('main:homepage')
 
 from rest_framework import viewsets
